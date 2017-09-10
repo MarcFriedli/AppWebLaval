@@ -50,3 +50,22 @@ header{
     background-color: white;
     color: black;
 }
+
+.main-div{
+    width: 100%;
+    margin-top: 100px;
+}
+
+.element{
+    display: flex;
+    margin-top: 50px;
+}
+
+.images{
+    width: 65%;
+}
+
+.text{
+    width: 35%;
+    padding-left: 10%;
+}
