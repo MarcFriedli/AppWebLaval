@@ -1,0 +1,45 @@
+header{
+    position: fixed;
+    top : 0px;
+    left: 0px;
+    width: 100%;
+    min-width: 600px;
+    height: 100px;
+    background-color: black;
+}
+
+#Logo{
+    height: 35px;
+}
+
+.bold{
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.menu{
+    height: 65px;
+    justify-content: center;
+    display: flex;
+    list-style: none;
+}
+
+.menu-element{
+    width: 30%;
+}
+
+.menu-element a{
+    display: block;
+    height: 65px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.4em;
+    line-height: 65px;
+    color: white;
+}
+
+.menu-element a:hover{
+    background-color: white;
+    color: black;
+}
