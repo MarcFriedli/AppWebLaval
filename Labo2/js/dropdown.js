@@ -1,3 +1,5 @@
+//TODO : make a namespace
+
 var searchString = "";
 
 var characterArray = ["Adele", "Mateo", "Louis", "Pierre", "Alfred", "Ophélie", "Valentine", "Daniel", "Maria", "Adrien"];
