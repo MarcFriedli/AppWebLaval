@@ -1,0 +1,1 @@
+A simple "homemade" dropdown search component in JS
