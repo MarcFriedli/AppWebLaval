@@ -34,12 +34,21 @@ function showAll(){
 }
 
 function displayPossibilities(possibilities){
-    //TODO : take the character name to the function when clicked
     var finalString = "";
     possibilities.forEach(function(possibilitie){
-        finalString = finalString + "<p class=\"possibility-element\" onclick=\"setDropdownSearchValue()\">" + possibilitie + "</p>";
+        //Show all the characters possible with the onclick option
+        finalString = finalString + "<p class='possibility-element' " +
+            "onclick='selectElement(\"" + possibilitie + "\")'> " +
+            possibilitie +
+            "</p>";
     });
     setDropdownPossibilitiesValues(finalString);
+}
+
+function selectElement(character){
+    setDropdownSearchValue(character);
+    setDropdownPossibilitiesValues("");
+    searchString = "";
 }
 
 function setDropdownSearchValue(text){
