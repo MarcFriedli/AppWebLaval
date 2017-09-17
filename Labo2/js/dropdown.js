@@ -16,7 +16,7 @@ function dropdownSearch(event){
 function searchPossibilities(searchString){
     var possibilities = [];
     characterArray.forEach(function(character){
-        if(character.includes(searchString)){
+        if(character.toLowerCase().includes(searchString.toLowerCase())){
             possibilities.push(character);
         }
     });
