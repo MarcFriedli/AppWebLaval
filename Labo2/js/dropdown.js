@@ -9,14 +9,14 @@ function dropdownSearch(event){
     //TODO : currently the application don't take account of the delete key... fix it.
     var charNum = event.charCode;
     searchString = searchString + String.fromCharCode(charNum);
+    console.log(searchString);
     searchPossibilities(searchString);
 }
 
 function resetSearch(){
     searchString = "";
-    console.log("Reseted !");
-    document.getElementById("Dropdown-search").value="";
-    document.getElementById("Dropdown-possibilities").innerHTML="Select a character"; //todo : not DRY
+    setDropdownSearchValue("");
+    setDropdownPossibilitiesValues("");
 }
 
 function searchPossibilities(searchString){
@@ -29,20 +29,23 @@ function searchPossibilities(searchString){
     displayPossibilities(possibilities);
 }
 
-function displayPossibilities(possibilities){
-    var finalString = "";
-    if (possibilities.length === 0) {
-        finalString = "Character unknown..."
-    }
-    else{
-        possibilities.forEach(function(possibilitie){
-            finalString = finalString + "<p class=\"possibility-element\" onclick=\"approveElement()\">" + possibilitie + "</p>";
-        });
-    }
-    document.getElementById("Dropdown-possibilities").innerHTML=finalString;
+function showAll(){
+    displayPossibilities(characterArray);
 }
 
-//When the client click on a possibilitie
-function approveElement(element){
-    //TODO
+function displayPossibilities(possibilities){
+    //TODO : take the character name to the function when clicked
+    var finalString = "";
+    possibilities.forEach(function(possibilitie){
+        finalString = finalString + "<p class=\"possibility-element\" onclick=\"setDropdownSearchValue()\">" + possibilitie + "</p>";
+    });
+    setDropdownPossibilitiesValues(finalString);
+}
+
+function setDropdownSearchValue(text){
+    document.getElementById("DropdownSearch").value=text;
+}
+
+function setDropdownPossibilitiesValues(text){
+    document.getElementById("DropdownPossibilities").innerHTML=text;
 }

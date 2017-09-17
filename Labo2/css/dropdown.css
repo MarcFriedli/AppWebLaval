@@ -1,0 +1,22 @@
+
+#dropdownsearch, .possibility-element    {
+    width : 20%;
+    min-width: 200px;
+}
+
+.possibility-element{
+    width: 100px;
+    height: 25px;
+}
+
+.possibility-element:hover{
+    background-color: aqua;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.reset-search{
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
