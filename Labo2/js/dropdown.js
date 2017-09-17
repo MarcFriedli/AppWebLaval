@@ -13,12 +13,6 @@ function dropdownSearch(event){
     searchPossibilities(searchString);
 }
 
-function resetSearch(){
-    searchString = "";
-    setDropdownSearchValue("");
-    setDropdownPossibilitiesValues("");
-}
-
 function searchPossibilities(searchString){
     var possibilities = [];
     characterArray.forEach(function(character){
@@ -46,6 +40,7 @@ function displayPossibilities(possibilities){
 }
 
 function selectElement(character){
+    //character == '' for the reset
     setDropdownSearchValue(character);
     setDropdownPossibilitiesValues("");
     searchString = "";
