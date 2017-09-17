@@ -1,19 +1,9 @@
 //TODO : make a namespace
 
-var searchString = "";
-
 var characterArray = ["Adele", "Mateo", "Louis", "Pierre", "Alfred", "Ophélie", "Valentine", "Daniel", "Maria", "Adrien"];
 characterArray.sort();
 
-function dropdownSearch(event){
-    //TODO : currently the application don't take account of the delete key... fix it.
-    var charNum = event.charCode;
-    searchString = searchString + String.fromCharCode(charNum);
-    console.log(searchString);
-    searchPossibilities(searchString);
-}
-
-function searchPossibilities(searchString){
+function dropdownSearch(searchString){
     var possibilities = [];
     characterArray.forEach(function(character){
         if(character.toLowerCase().includes(searchString.toLowerCase())){
@@ -43,7 +33,6 @@ function selectElement(character){
     //character == '' for the reset
     setDropdownSearchValue(character);
     setDropdownPossibilitiesValues("");
-    searchString = "";
 }
 
 function setDropdownSearchValue(text){

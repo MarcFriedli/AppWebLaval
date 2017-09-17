@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/reset.css">
 </head>
 <body>
-<input id="DropdownSearch" onkeypress="dropdownSearch(event)" onfocus="showAll()" placeholder="Select a character">
+<input id="DropdownSearch" onkeyup="dropdownSearch(this.value)" onfocus="showAll()" placeholder="Select a character">
 <span class="reset-search" onclick="selectElement('')">X</span>
 
 <div id="DropdownPossibilities"></div>
