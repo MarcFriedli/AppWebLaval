@@ -1,0 +1,17 @@
+.toast{
+    width: 30%;
+    height: 100px;
+    margin-top: 25px;
+}
+
+.success{
+    background-color: mediumspringgreen;
+}
+
+.info{
+    background-color: deepskyblue;
+}
+
+.error{
+    background-color: crimson;
+}
