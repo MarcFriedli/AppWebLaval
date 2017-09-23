@@ -8,7 +8,16 @@ class Toast{
     }
 
     display(){
-        document.getElementById("Toast-zone").innerHTML += '<div class="toast ' + this.type + '">' + this.text + '</div>'
+        this.elem = document.createElement("div");
+        this.elem.classList.add("toast");
+        this.elem.classList.add(this.type);
+        this.elem.appendChild(document.createTextNode(this.text));
+        const currentDiv = document.getElementById("Toast-zone");
+        document.body.insertBefore(this.elem, currentDiv);
+    }
+
+    hide(){
+        this.elem.parentNode.removeChild(this.elem);
     }
 }
 

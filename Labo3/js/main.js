@@ -9,5 +9,5 @@ function createToast(type){
     let inputText = document.getElementById('Input-text').value;
     toast.changeText(inputText);
     toast.display();
-    setInterval(function(){/*Todo, hide the toast*/}, 3000);
+    setTimeout(function(){console.log("Times out !"); toast.hide();}, 3000);
 }
