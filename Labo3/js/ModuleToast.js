@@ -3,12 +3,12 @@ class Toast{
         this.type = type;
     }
 
-    set changeText(text){
-        this.text = text;
+    changeText(text){
+        this.text = (text !== '') ? text : "I'm a toast without love. Nobody want to give me a text T_T";
     }
 
     display(){
-        document.getElementById("Toast-zone").innerHTML += '<div class="toast ' + this.type + '">You created a toast using ' + this.type + '</div>'
+        document.getElementById("Toast-zone").innerHTML += '<div class="toast ' + this.type + '">' + this.text + '</div>'
     }
 }
 
