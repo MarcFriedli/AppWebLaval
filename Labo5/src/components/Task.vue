@@ -1,6 +1,6 @@
 <template>
   <div id="component-task">
-    <div class="task-error" v-if="errorFound">
+    <div class="task-error" v-if="errorMessage.length">
       <span>{{errorMessage}}</span>
     </div>
 
@@ -29,60 +29,61 @@
     }
   };
 
+  function onError(cause) {
+    this.errorMessage = "Can't reply your request cause of " + cause;
+  }
+
+  function reset(a) {
+    this.errorMessage = "";
+    return a;
+  }
+
   export default {
     name: 'Task',
     data() {
       return {
         tasks: [],
         newTask: "",
-        errorFound: false,
         errorMessage: ""
       }
     },
     methods: {
       edit: function (task) {
-        console.log("This is a test");
         axios.put(`https://glo3102lab4.herokuapp.com/92b15b6b-6295-4552-9db7-4c261976171a/tasks/${task.id}`, {name: task.name})
-          .catch(e => {
-            this.errorMessage = "Can't reply your request cause of " + e;
-          });
+          .then(reset.bind(this))
+          .catch(onError.bind(this));
       },
       deleteTask: function (task) {
         axios.delete(`https://glo3102lab4.herokuapp.com/92b15b6b-6295-4552-9db7-4c261976171a/tasks/${task.id}`)
+          .then(reset.bind(this))
           .then(() => {
             console.log(this.tasks);
             this.tasks.removeIf((item) => {
               return item.id === task.id;
             });
           })
-          .catch(e => {
-            this.errorMessage = "Can't reply your request cause of " + e;
-          });
+          .catch(onError.bind(this));
       },
       addTask: function () {
         if (!this.newTask) {
-          this.errorFound = true;
-          this.errorMessage = "Your task is empty !";
-          console.log('task errorFound : ' + this.errorFound);
+          onError.bind(this)("your task is empty !");
           return;
         }
-        this.errorFound = false;
         axios.post(`https://glo3102lab4.herokuapp.com/92b15b6b-6295-4552-9db7-4c261976171a/tasks/`, {name: this.newTask})
+          .then(reset.bind(this))
           .then(task => {
             this.tasks.push(task.data);
             console.log(this.tasks);
           })
-          .catch(e => {
-
-          });
+          .catch(onError.bind(this));
       }
     },
     created() {
-      axios.get('https://glo3102lab4.herokuapp.com/92b15b6b-6295-4552-9db7-4c261976171a/tasks').then((response) => {
+      axios.get('https://glo3102lab4.herokuapp.com/92b15b6b-6295-4552-9db7-4c261976171a/tasks')
+        .then(reset.bind(this))
+        .then((response) => {
         this.tasks = response.data.tasks
-      }).catch(e => {
-        this.errorMessage = "Can't reply your request cause of " + e;
-      })
+      }).catch(onError.bind(this))
 
     }
   }
