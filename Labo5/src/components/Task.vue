@@ -1,7 +1,7 @@
 <template>
   <div id="component-task">
     <div class="task-error" v-if="errorFound">
-      <span v-model="errorMessage"></span>
+      <span>{{errorMessage}}</span>
     </div>
 
     New task : <input v-model="newTask"/>
