@@ -1,20 +1,20 @@
 <template>
   <div id="home">
     <geolocal></geolocal>
-    <weater></weater>
+    <weather></weather>
   </div>
 
 </template>
 
 <script>
   import Geolocal from './Geolocal';
-  import Weater from './Weater';
+  import Weather from './Weather';
 
   export default {
     name : 'Home',
     components: {
       Geolocal,
-      Weater
+      Weather
     }
   }
 </script>

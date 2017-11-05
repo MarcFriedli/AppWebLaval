@@ -23,4 +23,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.container {
+  background-color: #15c7ff;
+  width: 100%;
+  height: 300px;
+  padding: 3em;
+  margin: 1em;
+}
+
 </style>

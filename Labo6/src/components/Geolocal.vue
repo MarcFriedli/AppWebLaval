@@ -1,5 +1,5 @@
 <template>
-  <div class="geolocal">
+  <div class="geolocal container">
     <h1>Weather.js</h1>
     <b>{{city}}, {{state}}</b>
   </div>
@@ -25,14 +25,6 @@
 </script>
 
 <style scoped>
-  .geolocal {
-    background-color: #15c7ff;
-    width: 100%;
-    height: 300px;
-    padding: 3em;
-    margin: 1em;
-  }
-
   h1 {
     color: white;
   }
