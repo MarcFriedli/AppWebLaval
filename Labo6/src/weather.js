@@ -20,6 +20,6 @@ export function getWeather() {
   return getLocalisation().then(location => {
     let country = location.country_name;
     let city = location.city;
-    return new Request(`http://api.wunderground.com/api/${token}/geolookup/conditions/forecast/q/${country}/${city}.json`, myInit);
+    return new Request(`http://api.wunderground.com/api/${token}/geolookup/conditions/forecast10day/q/${country}/${city}.json`, myInit);
   }).then(fetch.bind(this)).then(response => response.json())
 }
