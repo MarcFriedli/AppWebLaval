@@ -12,7 +12,7 @@ const myInit = {
 export function getLocalisation() {
   const myRequest = new Request(`http://api.wunderground.com/api/${token}/geolookup/q/autoip.json`, myInit);
   return fetch(myRequest)
-    .then(response => response.json)
+    .then(response => response.json())
     .then(json => json.location)
 }
 

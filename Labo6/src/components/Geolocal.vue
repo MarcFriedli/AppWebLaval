@@ -13,7 +13,10 @@
       position: ''
     }),
     mounted() {
-      console.log(getLocalisation());
+      getLocalisation().then((localisation) => {
+        console.log("LOL", localisation);
+        this.position = localisation.country_name;
+      })
     }
   }
 </script>
