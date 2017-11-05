@@ -1,6 +1,7 @@
 <template>
   <div class="geolocal">
-    {{position}}
+    <h1>Weather.js</h1>
+    <b>{{city}}, {{state}}</b>
   </div>
 </template>
 
@@ -10,17 +11,29 @@
   export default {
     name : 'Home',
     data: ()=> ({
-      position: ''
+      state: '',
+      city: ''
     }),
     mounted() {
       getLocalisation().then((localisation) => {
         console.log("LOL", localisation);
-        this.position = localisation.country_name;
-      })
+        this.state = localisation.state;
+        this.city = localisation.city;
+      });
     }
   }
 </script>
 
-<style>
+<style scoped>
+  .geolocal {
+    background-color: #15c7ff;
+    width: 100%;
+    height: 300px;
+    padding: 3em;
+    margin: 1em;
+  }
 
+  h1 {
+    color: white;
+  }
 </style>
