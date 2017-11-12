@@ -9,12 +9,21 @@ export default class {
         return this.tasks.length - 1;
     }
 
-    removeTask(taskId) {
-        let ts = this.tasks.filter((task) => task.id === taskId);
+    edit(taskId, value) {
+        console.log('edit, id : ' + taskId);
+        let ts = this.tasks.filter((task) => task.id == taskId);
         if (ts.length !== 1) {
             return false;
         }
-        this.tasks.splice(this.tasks.indexOf(ts[0]));
+        ts[0].name = value;
+    }
+
+    removeTask(taskId) {
+        let ts = this.tasks.filter((task) => task.id == taskId);
+        if (ts.length !== 1) {
+            return false;
+        }
+        this.tasks.splice(this.tasks.indexOf(ts[0]), 1);
         return true;
     }
 }

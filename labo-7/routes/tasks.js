@@ -19,8 +19,6 @@ router.post('/:userId/tasks', (req, res) => {
         res.send({});
         return;
     }
-    console.log("MDR");
-    // console.log(request.body);
     let name = req.body.name;
     res.send({id: user.addTask(name), name: name});
 });
@@ -31,8 +29,9 @@ router.put('/:userId/tasks/:id', (req, res) => {
         res.send({});
         return;
     }
-
-
+    let name = req.body.name;
+    user.edit(req.params.id, name);
+    res.send({id: req.params.id, name: name});
 });
 router.delete('/:userId/tasks/:id', (req, res) => {
     let user = db.getUser(req.params.userId);
@@ -41,8 +40,8 @@ router.delete('/:userId/tasks/:id', (req, res) => {
         res.send({});
         return;
     }
-
-
+    user.removeTask(req.params.id);
+    res.send('Delete done');
 });
 
 export default router;
