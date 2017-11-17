@@ -30,7 +30,6 @@ router.post('/login', function (req, res, next) {
     persistance.token[token] = username;
     res.statusCode = 200;
     res.send({token: token});
-
 });
 
 
