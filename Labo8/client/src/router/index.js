@@ -13,6 +13,10 @@ export default new Router({
       component: Login
     },
     {
+      path: '*',
+      redirect: Login
+    },
+    {
       path: '/userprofile',
       name: 'Userprofile',
       component: Userprofile
