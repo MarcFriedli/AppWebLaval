@@ -4,6 +4,7 @@ async function getUserprofile(token) {
   console.log('Le token vaut : ' + token);
   const myHeaders = new Headers();
   myHeaders.append('set-cookie', `token=${token}`);
+  myHeaders.append('-token', token);
 
   const myInit = {
     method: 'GET',

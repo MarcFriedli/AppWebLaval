@@ -46,6 +46,12 @@
           location.href = '#/Userprofile';
         });
       }
+    },
+    created() {
+      let token = Cookie.get('token');
+      if (token !== undefined) {
+        location.href = '#/Userprofile';
+      }
     }
   }
 </script>
