@@ -3,7 +3,6 @@ const serverUrl = 'http://localhost:3000';
 async function getUserprofile(token) {
   console.log('Le token vaut : ' + token);
   const myHeaders = new Headers();
-  myHeaders.append('Samere', 'jpoirew');
   myHeaders.append('set-cookie', `token=${token}`);
 
   const myInit = {
