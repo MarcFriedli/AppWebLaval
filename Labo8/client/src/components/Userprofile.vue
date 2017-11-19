@@ -1,5 +1,6 @@
 <template>
   <div>
+    Welcome {{username}}
   </div>
 </template>
 
@@ -13,7 +14,10 @@
     }),
     created() {
       let token = Cookie.get('token');
-      getUserprofile(token);
+      getUserprofile(token).then(resp => {
+        this.username = resp.user;
+        console.log(this.username);
+      });
       if (this.username === '' || this.username === undefined) {
         // TODO
       }

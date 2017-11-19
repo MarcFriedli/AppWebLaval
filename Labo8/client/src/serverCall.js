@@ -16,7 +16,7 @@ async function getUserprofile(token) {
 
   const myRequest = new Request(`${serverUrl}/userprofile`, myInit);
   return fetch(myRequest)
-    .then(response => console.log("Réponse : ", response.json()))
+    .then(response => response.json())
     .catch(() => console.error('Something bad happens, please try again later'));
 }
 
