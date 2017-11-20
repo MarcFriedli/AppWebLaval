@@ -1,15 +1,12 @@
 const serverUrl = 'http://localhost:3000';
 
 async function getUserprofile(token) {
-  console.log('Le token vaut : ' + token);
   const myHeaders = new Headers();
-  myHeaders.append('set-cookie', `token=${token}`);
   myHeaders.append('-token', token);
 
   const myInit = {
     method: 'GET',
     headers: myHeaders,
-    credentials: 'same-origin',
     mode: 'cors',
     cache: 'default'
   };
