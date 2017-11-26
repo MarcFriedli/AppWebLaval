@@ -7,38 +7,30 @@ class ChatServer {
     }
 
     onConnection(socket) {
+        if (!socket.on) {
+            return;
+        }
         console.log('a user connected');
         socket.on('message', this.onMessage.bind(this, socket));
         socket.on('disconnect', this.onDisconnect.bind(this));
-        this.sendMessageToAllExcept(socket, 'connection', 'A user connected');
+        this.io.emit('connection', "A user connected");
         this.sockets.push(socket);
     }
 
     onMessage(socketEmmiter, message) {
-        console.log("message : ", message);
-        this.sendMessageToAll('message', message);
+        this.io.emit('message', message)
+        // this.sendMessageToAll('message', message);
     }
 
     onDisconnect(socket) {
-        //this.sockets.splice(this.sockets.indexOf(socket), 1);
-        this.sendMessageToAllExcept(socket, 'disconnection', "A user disconnected");
+        let s = this.sockets.findIndex((s) => s.id === socket.id);
+        console.log(s, socket.id);
+        // this.sockets.splice(this.sockets.indexOf(socket), 1);
+        console.log(this.sockets.indexOf(s));
+        this.io.emit('disconnection', "A user disconnected");
         console.log('user disconnected');
     }
 
-    sendMessageToAll(eventName, message) {
-        console.log('there is ', this.sockets.length);
-        this.sockets.forEach((socket) => {
-            socket.emit(eventName, message);
-        })
-    }
-    sendMessageToAllExcept(exception, eventName, message) {
-        this.sockets.forEach((socket) => {
-            if (socket === exception) {
-                return;
-            }
-            socket.emit(eventName, message);
-        })
-    }
 
 }
 
