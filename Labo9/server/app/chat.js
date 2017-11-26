@@ -16,15 +16,21 @@ class ChatServer {
 
     onMessage(socketEmmiter, message) {
         console.log("message : ", message);
-        this.sendMessageToAllExcept(socketEmmiter, 'message', message);
+        this.sendMessageToAll('message', message);
     }
 
     onDisconnect(socket) {
-        this.sockets.splice(this.sockets.indexOf(socket), 1);
+        //this.sockets.splice(this.sockets.indexOf(socket), 1);
         this.sendMessageToAllExcept(socket, 'disconnection', "A user disconnected");
         console.log('user disconnected');
     }
 
+    sendMessageToAll(eventName, message) {
+        console.log('there is ', this.sockets.length);
+        this.sockets.forEach((socket) => {
+            socket.emit(eventName, message);
+        })
+    }
     sendMessageToAllExcept(exception, eventName, message) {
         this.sockets.forEach((socket) => {
             if (socket === exception) {
