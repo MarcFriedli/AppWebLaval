@@ -10,9 +10,10 @@ class ChatServer {
             return;
         }
         console.log('a user connected');
+        this.io.emit('toto', "A user connected");
+
         socket.on('message', this.onMessage.bind(this, socket));
         socket.on('disconnect', this.onDisconnect.bind(this));
-        this.io.emit('connection', "A user connected");
     }
 
     onMessage(socketEmmiter, message) {
