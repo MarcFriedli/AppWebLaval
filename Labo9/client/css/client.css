@@ -1,0 +1,18 @@
+body{
+  display: flex;
+  justify-content: center;
+}
+
+#client{
+  text-align: left;
+  width: 100%;
+  min-width: 300px;
+}
+
+#chat-log{
+  border-style: solid;
+  height: 300px;
+  min-width: 300px;
+  width: 66%;
+  overflow: scroll;
+}

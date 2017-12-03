@@ -1,12 +1,10 @@
 <template>
   <div id="client">
-    Name : <input type="text" v-model="username">
+    ChatLog :
     <div id="chat-log">
-      <ul>
-        <li v-for="msg in chatLog">
+      <p v-for="msg in chatLog">
           {{msg}}
-        </li>
-      </ul>
+      </p>
     </div>
     <input type="text" v-model="chatMsg">
     <input type="submit" value="submit" v-on:click="add">
@@ -23,17 +21,28 @@
     }),
     methods : {
       add() {
-        // Emit the server side
-        this.$socket.emit("message", this.chatMsg);
-        console.log('send : ' + this.chatMsg);
+        if (this.chatMsg === '') {
+          return;
+        }
+        this.$socket.emit('message', this.chatMsg);
+        this.chatMsg = '';
       }
     },
     socket: {
       events: {
         message(msg) {
           this.chatLog.push(msg);
+        },
+        disconnection(msg) {
+          this.chatLog.push(msg);
+        },
+        toto(msg) {
+          this.chatLog.push(msg);
         }
       }
     }
   }
 </script>
+
+<style src="../../css/client.css">
+</style>
