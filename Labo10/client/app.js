@@ -10,12 +10,12 @@ const saveButton = document.getElementById('save')
 let tasks = []
 
 // La première opération est de "fetcher" les tasks et de les afficher
-api.getTasks().then((response) => {
+api.init.then( () => { api.getTasks().then((response) => {
     // On sauvegarde la reponse dans notre objet tasks
     tasks = response
     // On fait le rendu de c'est tâches (c'est le coeur de notre app)
     renderTasks(tasks)
-})
+})});
 
 // Le click sur le bouton `Save` lancera la création d'une tâche
 saveButton.addEventListener('click', () => {
@@ -36,7 +36,7 @@ const renderTasks = (tasks) => {
     // On crée un fragment https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment
     // Ceci nous permettera d'insérer les tâches une seule fois dans le DOM
     const tasksFragment = document.createDocumentFragment()
-    
+
     // On itère sur toutes les tâches pour créer les éléments HTML qui afficheront celles-ci
     tasks.forEach((task, index) => {
         // On crée un `div` pour englobber chaque tâche

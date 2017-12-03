@@ -2,7 +2,6 @@ class ChatServer {
     constructor(http) {
         this.io = require('socket.io')(http);
         this.io.on('connection', this.onConnection.bind(this));
-
     }
 
     onConnection(socket) {

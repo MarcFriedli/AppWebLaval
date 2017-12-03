@@ -2,21 +2,32 @@
 
 // On conserve l'id utilisateur dans une variable séparée pour facilement le changer
 // let userId = '29241f35-e732-4b5d-9b13-cc8c0b048279'
-let userId = localStorage.getItem("userId");
+let userId;
 
 // L'URL de base de l'api est stocké dans baseUrl
-const baseUrl = `https://glo3102lab4.herokuapp.com/${userId}`;
+let baseUrl = `https://glo3102lab4.herokuapp.com/${userId}`;
 let userPromise;
 
-if (userId === null) {
+export const init = new Promise ((r) => {
+  userId = localStorage.getItem("userId");
+
+  if (userId === null) {
     console.log(userId);
     userPromise = fetch(`https://glo3102lab4.herokuapp.com/users`, {
-        method: 'POST',
-    }).then((a) => {
-        console.log(a);
-        userId = a.id;
+      method: 'POST',
+    }).then(r => r.json()).then((a) => {
+      userId = a.id;
+      console.log(userId);
+      console.log("C'est ok");
+      localStorage.setItem("userId", userId);
+      r();
     });
-}
+  } else {
+    baseUrl = `https://glo3102lab4.herokuapp.com/${userId}`;
+    r();
+  }
+});
+
 
 // Implémentation de la méthode GET avec `fetch`
 // Permet de lister les tâches
